@@ -1,6 +1,6 @@
 package com.jocata.externalservices.entities;
 
-public class PanEntity {
+public class PanDetails {
     private String panNo;
     private String panStatus;
     private String name;

@@ -1,12 +1,11 @@
 package com.jocata.externalservices.dao.impl;
 
 import com.jocata.externalservices.dao.PanDao;
-import com.jocata.externalservices.entities.PanEntity;
-import com.jocata.externalservices.form.PanResponseForm;
+import com.jocata.externalservices.entities.PanDetails;
 
 public class PanDaoImpl implements PanDao {
     @Override
-    public PanResponseForm getPanInfo(PanEntity panEntity) {
-        return null;
+    public PanDetails getPanInfo(String panNo) {
+        return new PanDetails();
     }
 }

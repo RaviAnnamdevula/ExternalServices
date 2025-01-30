@@ -30,11 +30,11 @@ public class PanResponseForm {
         this.name = name;
     }
 
-    public String getDao() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDao(String dao) {
+    public void setDob(String dao) {
         this.dob = dao;
     }
 }

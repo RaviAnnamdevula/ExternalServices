@@ -12,5 +12,5 @@ public class PanControllerImpl implements PanController {
     public PanResponseForm getPanInfo(PanRequestForm panRequestForm) {
         return panServices.getPanInfo(panRequestForm);
     }
-
 }
+
