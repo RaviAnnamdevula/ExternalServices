@@ -9,7 +9,10 @@ public class AadhaarController {
 
     AadhaarService aadhaarService = new AadhaarServiceImpl();
 // hi added new line in DbConnection branch
-    public AadhaarResponseForm getAadhaarInfo(AadhaarRequestForm aadhaarRequestForm) {
-        return aadhaarService.getAadhaarInfo(aadhaarRequestForm);
+    public String getAadhaarInfo(String id) {
+        AadhaarRequestForm aadhaarRequestForm = new AadhaarRequestForm();
+        aadhaarRequestForm.setUidNumber(id);
+        AadhaarResponseForm aadhaarResponseForm =  aadhaarService.getAadhaarInfo(aadhaarRequestForm);
+        return  "";
     }
 }
