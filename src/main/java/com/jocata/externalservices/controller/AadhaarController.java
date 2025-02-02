@@ -4,15 +4,21 @@ import com.jocata.externalservices.form.AadhaarRequestForm;
 import com.jocata.externalservices.form.AadhaarResponseForm;
 import com.jocata.externalservices.services.AadhaarService;
 import com.jocata.externalservices.services.impl.AadhaarServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/aadhaar")
 public class AadhaarController {
 
-    AadhaarService aadhaarService = new AadhaarServiceImpl();
-// hi added new line in DbConnection branch
-    public String getAadhaarInfo(String id) {
+    @Autowired
+    AadhaarService aadhaarService;// = new AadhaarServiceImpl();
+
+    //@GetMapping("/{id}")
+    @GetMapping
+    public AadhaarResponseForm getAadhaarInfo(@RequestParam("uid")/*@PathVariable*/ String uid) {
         AadhaarRequestForm aadhaarRequestForm = new AadhaarRequestForm();
-        aadhaarRequestForm.setUidNumber(id);
-        AadhaarResponseForm aadhaarResponseForm =  aadhaarService.getAadhaarInfo(aadhaarRequestForm);
-        return  "";
+        aadhaarRequestForm.setUidNumber(uid);
+        return aadhaarService.getAadhaarInfo(aadhaarRequestForm);
     }
 }

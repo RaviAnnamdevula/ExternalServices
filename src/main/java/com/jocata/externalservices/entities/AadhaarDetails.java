@@ -1,6 +1,16 @@
 package com.jocata.externalservices.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "aadhaar")
 public class AadhaarDetails {
+
+    @Id
+    @Column(name = "uidNumber", unique = true, nullable = false)
     private String uidNumber;
     private String name;
     private String gender;

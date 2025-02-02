@@ -7,12 +7,21 @@ import com.jocata.externalservices.dao.impl.PanDaoImpl;
 import com.jocata.externalservices.entities.AadhaarDetails;
 import com.jocata.externalservices.form.*;
 import com.jocata.externalservices.services.AadhaarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AadhaarServiceImpl implements AadhaarService {
-    AadhaarDao aadhaarDao = new AadhaarDaoImpl();
+
+    @Autowired
+    AadhaarDao aadhaarDao ;//= new AadhaarDaoImpl();
     @Override
     public AadhaarResponseForm getAadhaarInfo(AadhaarRequestForm aadhaarRequestForm) {
         AadhaarDetails aadhaarDetails = aadhaarDao.getAadharInfo(aadhaarRequestForm.getUidNumber());
+
+        if (aadhaarDetails == null) {
+            return null;
+        }
 
         AadhaarResponseForm aadhaarResponseForm = new AadhaarResponseForm();
 
