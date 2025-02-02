@@ -21,7 +21,9 @@ public class AadhaarServiceImpl implements AadhaarService {
     @Override
     public AadhaarResponseForm getAadhaarInfo(AadhaarRequestForm aadhaarRequestForm) {
 
-        logger.info("Fetching Aadhaar details for UID: {}", aadhaarRequestForm.getUidNumber());
+        logger.info("Fetching Aadhaar details for UID: {}", aadhaarRequestForm.getUidNumber() );
+        logger.info("Task thread name{}", Thread.currentThread().getName());
+
         AadhaarDetails aadhaarDetails = aadhaarDao.getAadharInfo(aadhaarRequestForm.getUidNumber());
 
         if (aadhaarDetails == null) {
