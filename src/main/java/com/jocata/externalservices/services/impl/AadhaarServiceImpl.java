@@ -7,6 +7,8 @@ import com.jocata.externalservices.dao.impl.PanDaoImpl;
 import com.jocata.externalservices.entities.AadhaarDetails;
 import com.jocata.externalservices.form.*;
 import com.jocata.externalservices.services.AadhaarService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +16,20 @@ import org.springframework.stereotype.Service;
 public class AadhaarServiceImpl implements AadhaarService {
 
     @Autowired
-    AadhaarDao aadhaarDao ;//= new AadhaarDaoImpl();
+    AadhaarDao aadhaarDao ;
+    private static final Logger logger = LoggerFactory.getLogger(AadhaarServiceImpl.class);
     @Override
     public AadhaarResponseForm getAadhaarInfo(AadhaarRequestForm aadhaarRequestForm) {
+
+        logger.info("Fetching Aadhaar details for UID: {}", aadhaarRequestForm.getUidNumber());
         AadhaarDetails aadhaarDetails = aadhaarDao.getAadharInfo(aadhaarRequestForm.getUidNumber());
 
         if (aadhaarDetails == null) {
+            logger.warn("No Aadhaar details found for UID: {}", aadhaarRequestForm.getUidNumber());
             return null;
         }
 
+        logger.info("Aadhaar details found: {}", aadhaarDetails);
         AadhaarResponseForm aadhaarResponseForm = new AadhaarResponseForm();
 
         //Uid
@@ -64,6 +71,8 @@ public class AadhaarServiceImpl implements AadhaarService {
         email.setEmail(aadhaarDetails.getEmail());
         email.setHashedEmail(aadhaarDetails.getHashedEmail());
         email.setMaskedEmail(aadhaarDetails.getMaskedEmail());
+        aadhaarResponseForm.setEmail(email);
+
 
         return aadhaarResponseForm;
     }

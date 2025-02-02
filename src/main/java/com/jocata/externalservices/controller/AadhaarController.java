@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.*;
 public class AadhaarController {
 
     @Autowired
-    AadhaarService aadhaarService;// = new AadhaarServiceImpl();
+    AadhaarService aadhaarService = new AadhaarServiceImpl();
 
-    //@GetMapping("/{id}")
     @GetMapping
-    public AadhaarResponseForm getAadhaarInfo(@RequestParam("uid")/*@PathVariable*/ String uid) {
+    public AadhaarResponseForm getAadhaarInfo(@RequestParam("uid") String uid) {
         AadhaarRequestForm aadhaarRequestForm = new AadhaarRequestForm();
         aadhaarRequestForm.setUidNumber(uid);
         return aadhaarService.getAadhaarInfo(aadhaarRequestForm);
