@@ -1,10 +1,20 @@
 package com.jocata.externalservices.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "PAN")
 public class PanDetails {
+
+    @Id
+    @Column(name = "panNo", unique = true, nullable = false)
     private String panNo;
     private String panStatus;
-    private String name;
-    private String dob;
+    private String panName;
+    private String panDob;
 
     public String getPanNo() {
         return panNo;
@@ -22,19 +32,19 @@ public class PanDetails {
         this.panStatus = panStatus;
     }
 
-    public String getName() {
-        return name;
+    public String getPanName() {
+        return panName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPanName(String panName) {
+        this.panName = panName;
     }
 
-    public String getDob() {
-        return dob;
+    public String getPanDob() {
+        return panDob;
     }
 
-    public void setDob(String dob) {
-        this.dob = dob;
+    public void setPanDob(String panDob) {
+        this.panDob = panDob;
     }
 }

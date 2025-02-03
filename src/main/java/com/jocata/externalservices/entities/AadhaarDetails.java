@@ -21,10 +21,10 @@ public class AadhaarDetails {
     private String state;
     private String pinCode;
     private String imageData;
-    private String mobile;
+    private String mobileNo;
     private String maskedMobile;
     private String hashedMobile;
-    private String email;
+    private String emailAddress;
     private String maskedEmail;
     private String hashedEmail;
 
@@ -108,12 +108,12 @@ public class AadhaarDetails {
         this.imageData = imageData;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getMobileNo() {
+        return mobileNo;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
     }
 
     public String getMaskedMobile() {
@@ -132,12 +132,12 @@ public class AadhaarDetails {
         this.hashedMobile = hashedMobile;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getMaskedEmail() {

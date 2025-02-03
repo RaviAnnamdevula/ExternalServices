@@ -1,9 +1,6 @@
 package com.jocata.externalservices.services.impl;
 
 import com.jocata.externalservices.dao.AadhaarDao;
-import com.jocata.externalservices.dao.PanDao;
-import com.jocata.externalservices.dao.impl.AadhaarDaoImpl;
-import com.jocata.externalservices.dao.impl.PanDaoImpl;
 import com.jocata.externalservices.entities.AadhaarDetails;
 import com.jocata.externalservices.form.*;
 import com.jocata.externalservices.services.AadhaarService;
@@ -22,7 +19,7 @@ public class AadhaarServiceImpl implements AadhaarService {
     public AadhaarResponseForm getAadhaarInfo(AadhaarRequestForm aadhaarRequestForm) {
 
         logger.info("Fetching Aadhaar details for UID: {}", aadhaarRequestForm.getUidNumber() );
-        logger.info("Task thread name{}", Thread.currentThread().getName());
+        logger.info("Task thread name{}: ", Thread.currentThread().getName());
 
         AadhaarDetails aadhaarDetails = aadhaarDao.getAadharInfo(aadhaarRequestForm.getUidNumber());
 
@@ -62,7 +59,7 @@ public class AadhaarServiceImpl implements AadhaarService {
 
         //mobile
         Mobile mobile = new Mobile();
-        mobile.setMobileNo(aadhaarDetails.getMobile());
+        mobile.setMobileNo(aadhaarDetails.getMobileNo());
         mobile.setHashedMobile(aadhaarDetails.getHashedMobile());
         mobile.setMaskedMobile(aadhaarDetails.getMaskedMobile());
 
@@ -70,7 +67,7 @@ public class AadhaarServiceImpl implements AadhaarService {
 
         //email
         Email email = new Email();
-        email.setEmail(aadhaarDetails.getEmail());
+        email.setEmail(aadhaarDetails.getEmailAddress());
         email.setHashedEmail(aadhaarDetails.getHashedEmail());
         email.setMaskedEmail(aadhaarDetails.getMaskedEmail());
         aadhaarResponseForm.setEmail(email);
