@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AadhaarController {
 
     @Autowired
-    AadhaarService aadhaarService = new AadhaarServiceImpl();
+    AadhaarService aadhaarService; /* = new AadhaarServiceImpl();*/
 
     @GetMapping
     public AadhaarResponseForm getAadhaarInfo(@RequestParam("uid") String uid) {
